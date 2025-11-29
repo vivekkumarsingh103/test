@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DramaWallah | Premium Streaming</title>
+    <title>DramaWallah - K-drama Inspired Streaming</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --crimson: #e50914;
-            --cyan: #00ffff;
-            --gold: #ffd700;
-            --dark-bg: #0a0a0f;
-            --dark-card: #12121f;
-            --light-text: #f5f5f7;
-            --gray-text: #8a8a8e;
+            --lavender: #e6e6fa;
+            --misty-pink: #f8d7da;
+            --creamy-white: #fefefe;
+            --soft-lavender: #d8bfd8;
+            --light-pink: #f5d0d6;
+            --pastel-purple: #c8a2c8;
+            --text-dark: #5d5d7a;
+            --text-light: #8a8aa3;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
+            background-color: var(--creamy-white);
+            color: var(--text-dark);
             overflow-x: hidden;
         }
 
-        /* Header Styles */
-        header {
+        /* Navigation */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,304 +40,136 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 10, 15, 0.9);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--crimson), var(--cyan));
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--light-pink));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
         }
 
-        nav a {
-            color: var(--light-text);
+        .nav-links a {
             text-decoration: none;
+            color: var(--text-dark);
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
             position: relative;
         }
 
-        nav a:hover {
-            color: var(--cyan);
+        .nav-links a:hover {
+            color: var(--pastel-purple);
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
             width: 0;
             height: 2px;
-            background: var(--cyan);
-            transition: width 0.3s ease;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, var(--pastel-purple), var(--light-pink));
+            transition: width 0.3s;
         }
 
-        nav a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        .user-actions {
+        .nav-icons {
             display: flex;
-            align-items: center;
             gap: 1.5rem;
         }
 
-        .search-box {
-            position: relative;
-        }
-
-        .search-box input {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 0.6rem 1.2rem;
-            color: var(--light-text);
-            font-size: 0.9rem;
-            width: 220px;
-            transition: all 0.3s ease;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--cyan);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .search-box i {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray-text);
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
+        .nav-icons i {
+            font-size: 1.2rem;
+            color: var(--text-dark);
             cursor: pointer;
+            transition: color 0.3s;
         }
 
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--crimson), var(--cyan));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1.1rem;
+        .nav-icons i:hover {
+            color: var(--pastel-purple);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            position: relative;
+            height: 90vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
             padding: 0 5%;
+            margin-top: 5rem;
+            background: linear-gradient(135deg, var(--lavender), var(--misty-pink));
+            border-radius: 0 0 30px 30px;
+            position: relative;
             overflow: hidden;
-            margin-top: 80px;
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.9)), 
-                        url('https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            z-index: 2;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--light-text), var(--cyan));
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--light-pink));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .hero p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--gray-text);
+            font-size: 1.2rem;
+            max-width: 600px;
             margin-bottom: 2rem;
+            color: var(--text-light);
+            line-height: 1.6;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--crimson);
+        .cta-button {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--light-pink));
             color: white;
-            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #ff0a16;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--light-text);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        /* Floating 3D Elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floating-element {
-            position: absolute;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .element-1 {
-            width: 180px;
-            height: 250px;
-            top: 15%;
-            right: 15%;
-            background: linear-gradient(135deg, rgba(229, 9, 20, 0.1), rgba(0, 255, 255, 0.1));
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .element-2 {
-            width: 150px;
-            height: 200px;
-            bottom: 20%;
-            right: 25%;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(229, 9, 20, 0.1));
-            animation: float 10s ease-in-out infinite 1s;
-        }
-
-        .element-3 {
-            width: 120px;
-            height: 170px;
-            top: 40%;
-            right: 10%;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 215, 0, 0.1));
-            animation: float 12s ease-in-out infinite 2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        /* Filter Bar */
-        .filter-bar {
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(18, 18, 31, 0.7);
-            margin: 0 5%;
-            border-radius: 15px;
-            margin-top: -40px;
-            position: relative;
-            z-index: 10;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .filter-options {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .filter-option {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .filter-option label {
-            font-size: 0.8rem;
-            color: var(--gray-text);
-            font-weight: 500;
-        }
-
-        .filter-select {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.7rem 1rem;
-            color: var(--light-text);
-            font-size: 0.9rem;
-            min-width: 150px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(200, 162, 200, 0.3);
         }
 
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--cyan);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(200, 162, 200, 0.4);
         }
 
-        .filter-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        /* Content Grid */
-        .content-section {
-            padding: 4rem 5%;
+        /* Content Sections */
+        .section {
+            padding: 5rem 5%;
         }
 
         .section-header {
@@ -348,699 +180,581 @@
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
+            color: var(--text-dark);
             position: relative;
-            padding-left: 1rem;
         }
 
-        .section-title::before {
+        .section-title::after {
             content: '';
             position: absolute;
+            width: 50px;
+            height: 3px;
+            bottom: -10px;
             left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--crimson);
-            border-radius: 4px;
+            background: linear-gradient(to right, var(--pastel-purple), var(--light-pink));
         }
 
         .view-all {
-            color: var(--cyan);
+            color: var(--pastel-purple);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.3s ease;
+            transition: gap 0.3s;
         }
 
         .view-all:hover {
-            gap: 0.8rem;
+            gap: 1rem;
         }
 
-        .content-grid {
+        /* Drama Cards */
+        .drama-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
-        .poster-card {
-            background: var(--dark-card);
-            border-radius: 12px;
+        .drama-card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(200, 162, 200, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .poster-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-color: rgba(0, 255, 255, 0.2);
+        .drama-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(200, 162, 200, 0.2);
         }
 
-        .poster-image {
-            width: 100%;
+        .card-image {
             height: 300px;
-            object-fit: cover;
-            transition: all 0.5s ease;
+            width: 100%;
+            background: linear-gradient(135deg, var(--lavender), var(--misty-pink));
+            position: relative;
+            overflow: hidden;
         }
 
-        .poster-card:hover .poster-image {
-            transform: scale(1.05);
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.1));
         }
 
-        .poster-info {
+        .card-content {
             padding: 1.2rem;
         }
 
-        .poster-title {
-            font-size: 1rem;
+        .card-title {
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            color: var(--text-dark);
         }
 
-        .poster-meta {
+        .card-info {
             display: flex;
             justify-content: space-between;
-            color: var(--gray-text);
-            font-size: 0.85rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
         }
 
-        .rating {
-            color: var(--gold);
-            font-weight: 600;
+        .card-rating {
+            color: #ffd700;
         }
 
-        /* Content Page */
-        .content-page {
-            padding: 6rem 5% 4rem;
-            display: none;
-        }
-
-        .content-header {
-            display: flex;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .content-poster {
-            flex: 0 0 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .content-poster img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .content-details {
-            flex: 1;
-        }
-
-        .content-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--light-text), var(--cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .content-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .meta-chip {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .meta-chip.quality {
-            background: rgba(0, 255, 255, 0.1);
-            color: var(--cyan);
-            border-color: rgba(0, 255, 255, 0.2);
-        }
-
-        .meta-chip.rating {
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--gold);
-            border-color: rgba(255, 215, 0, 0.2);
-        }
-
-        .content-description {
-            line-height: 1.7;
-            color: var(--gray-text);
-            margin-bottom: 2rem;
-        }
-
-        .content-actions {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn-play {
-            background: var(--crimson);
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--light-pink));
             color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 1rem 2rem;
-            border-radius: 10px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
         }
 
-        .btn-play:hover {
-            background: #ff0a16;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
-        }
-
-        .btn-favorite {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--light-text);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        /* Featured Drama */
+        .featured-drama {
             display: flex;
+            gap: 3rem;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-favorite:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: scale(1.1);
-        }
-
-        /* Recommendation Ribbon */
-        .recommendation-ribbon {
             margin-top: 3rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(200, 162, 200, 0.1);
+        }
+
+        .featured-image {
+            flex: 1;
+            height: 400px;
+            background: linear-gradient(135deg, var(--lavender), var(--misty-pink));
+        }
+
+        .featured-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .featured-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .featured-description {
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .featured-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .watch-btn {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--light-pink));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .watch-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .save-btn {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: var(--pastel-purple);
+            border: 1px solid var(--pastel-purple);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .save-btn:hover {
+            background: rgba(200, 162, 200, 0.1);
+        }
+
+        /* Carousel */
+        .carousel {
             position: relative;
+            margin-top: 2rem;
             overflow: hidden;
         }
 
-        .ribbon-header {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .ribbon-header i {
-            color: var(--cyan);
-        }
-
-        .ribbon-container {
+        .carousel-container {
             display: flex;
             gap: 1.5rem;
             overflow-x: auto;
-            padding: 1rem 0;
             scroll-behavior: smooth;
+            padding: 1rem 0;
+            scrollbar-width: none;
         }
 
-        .ribbon-container::-webkit-scrollbar {
+        .carousel-container::-webkit-scrollbar {
             display: none;
         }
 
-        .ribbon-item {
-            flex: 0 0 180px;
-            border-radius: 10px;
+        .carousel-item {
+            min-width: 150px;
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(200, 162, 200, 0.1);
+            transition: transform 0.3s;
         }
 
-        .ribbon-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 255, 0.3);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        .carousel-item:hover {
+            transform: scale(1.05);
         }
 
-        .ribbon-item img {
+        .carousel-image {
+            height: 200px;
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            background: linear-gradient(135deg, var(--lavender), var(--misty-pink));
+        }
+
+        .carousel-title {
+            padding: 1rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .carousel-nav:hover {
+            background: var(--lavender);
+        }
+
+        .carousel-prev {
+            left: -20px;
+        }
+
+        .carousel-next {
+            right: -20px;
         }
 
         /* Footer */
-        footer {
-            background: rgba(8, 8, 12, 0.9);
+        .footer {
+            background: linear-gradient(135deg, var(--lavender), var(--misty-pink));
             padding: 4rem 5% 2rem;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px 30px 0 0;
+            margin-top: 5rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
         .footer-column h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: var(--light-text);
+            color: var(--text-dark);
         }
 
-        .footer-column ul {
+        .footer-links {
             list-style: none;
         }
 
-        .footer-column li {
+        .footer-links li {
             margin-bottom: 0.8rem;
         }
 
-        .footer-column a {
-            color: var(--gray-text);
+        .footer-links a {
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            color: var(--text-light);
+            transition: color 0.3s;
         }
 
-        .footer-column a:hover {
-            color: var(--cyan);
+        .footer-links a:hover {
+            color: var(--pastel-purple);
         }
 
-        .social-links {
+        .social-icons {
             display: flex;
             gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--light-text);
-            transition: all 0.3s ease;
+        .social-icons i {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            transition: color 0.3s;
         }
 
-        .social-links a:hover {
-            background: var(--cyan);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
+        .social-icons i:hover {
+            color: var(--pastel-purple);
         }
 
-        .copyright {
+        .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--gray-text);
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            color: var(--text-light);
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 2.8rem;
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .filter-bar {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-            
-            .filter-options {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .content-header {
+            .featured-drama {
                 flex-direction: column;
             }
             
-            .content-poster {
-                flex: 0 0 auto;
-                max-width: 300px;
+            .featured-image {
+                width: 100%;
             }
         }
 
         @media (max-width: 768px) {
-            nav ul {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
                 display: none;
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
             
-            .search-box input {
-                width: 180px;
-            }
-            
-            .content-grid {
+            .drama-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
             
-            .floating-elements {
-                display: none;
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="logo">DramaWallah</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Series</a></li>
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">New & Popular</a></li>
-                <li><a href="#">My List</a></li>
-            </ul>
-        </nav>
-        <div class="user-actions">
-            <div class="search-box">
-                <input type="text" placeholder="Search dramas...">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="user-profile">
-                <div class="avatar">AK</div>
-                <i class="fas fa-chevron-down"></i>
-            </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Dramas</a>
+            <a href="#">Movies</a>
+            <a href="#">My List</a>
         </div>
-    </header>
+        <div class="nav-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="floating-elements">
-            <div class="floating-element element-1"></div>
-            <div class="floating-element element-2"></div>
-            <div class="floating-element element-3"></div>
-        </div>
-        <div class="hero-content">
-            <h1>Immerse in Cinematic Drama Excellence</h1>
-            <p>Experience premium storytelling with our curated collection of award-winning dramas from around the world. Ultra HD streaming with immersive audio.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary"><i class="fas fa-play"></i> Watch Now</button>
-                <button class="btn btn-secondary"><i class="fas fa-info-circle"></i> More Info</button>
-            </div>
-        </div>
+        <h1>DramaWallah</h1>
+        <p>Immerse yourself in captivating stories with our curated collection of K-dramas, C-dramas, and more. Experience emotions in every frame.</p>
+        <button class="cta-button">Start Watching Now</button>
     </section>
 
-    <!-- Filter Bar -->
-    <div class="filter-bar">
-        <div class="filter-options">
-            <div class="filter-option">
-                <label for="year">Year</label>
-                <select id="year" class="filter-select">
-                    <option>All Years</option>
-                    <option>2023</option>
-                    <option>2022</option>
-                    <option>2021</option>
-                    <option>2020</option>
-                </select>
-            </div>
-            <div class="filter-option">
-                <label for="quality">Quality</label>
-                <select id="quality" class="filter-select">
-                    <option>All Quality</option>
-                    <option>4K Ultra HD</option>
-                    <option>1080p Full HD</option>
-                    <option>720p HD</option>
-                </select>
-            </div>
-            <div class="filter-option">
-                <label for="genre">Genre</label>
-                <select id="genre" class="filter-select">
-                    <option>All Genres</option>
-                    <option>Thriller</option>
-                    <option>Romance</option>
-                    <option>Mystery</option>
-                    <option>Historical</option>
-                </select>
-            </div>
-            <div class="filter-option">
-                <label for="language">Language</label>
-                <select id="language" class="filter-select">
-                    <option>All Languages</option>
-                    <option>Hindi</option>
-                    <option>English</option>
-                    <option>Korean</option>
-                    <option>Spanish</option>
-                </select>
-            </div>
-        </div>
-        <div class="filter-actions">
-            <button class="btn btn-secondary">Reset</button>
-            <button class="btn btn-primary">Apply</button>
-        </div>
-    </div>
-
-    <!-- Content Grid -->
-    <section class="content-section">
+    <!-- Trending Dramas -->
+    <section class="section">
         <div class="section-header">
             <h2 class="section-title">Trending Now</h2>
             <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="content-grid">
-            <!-- Drama Cards -->
-            <div class="poster-card" onclick="showContentPage()">
-                <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Drama Poster" class="poster-image">
-                <div class="poster-info">
-                    <h3 class="poster-title">The Last Emperor</h3>
-                    <div class="poster-meta">
-                        <span>2023</span>
-                        <span class="rating"><i class="fas fa-star"></i> 8.7</span>
+        <div class="drama-grid">
+            <!-- Drama Card 1 -->
+            <div class="drama-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Eternal Sunshine</h3>
+                    <div class="card-info">
+                        <span>2023 • Romance</span>
+                        <span class="card-rating"><i class="fas fa-star"></i> 9.2</span>
+                    </div>
+                </div>
+                <div class="card-badge">New</div>
+            </div>
+            
+            <!-- Drama Card 2 -->
+            <div class="drama-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Moonlit Garden</h3>
+                    <div class="card-info">
+                        <span>2023 • Fantasy</span>
+                        <span class="card-rating"><i class="fas fa-star"></i> 8.9</span>
                     </div>
                 </div>
             </div>
-            <div class="poster-card" onclick="showContentPage()">
-                <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Drama Poster" class="poster-image">
-                <div class="poster-info">
-                    <h3 class="poster-title">Shadows of Deceit</h3>
-                    <div class="poster-meta">
-                        <span>2023</span>
-                        <span class="rating"><i class="fas fa-star"></i> 9.1</span>
+            
+            <!-- Drama Card 3 -->
+            <div class="drama-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">City of Dreams</h3>
+                    <div class="card-info">
+                        <span>2023 • Drama</span>
+                        <span class="card-rating"><i class="fas fa-star"></i> 8.7</span>
                     </div>
                 </div>
             </div>
-            <div class="poster-card" onclick="showContentPage()">
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2050&q=80" alt="Drama Poster" class="poster-image">
-                <div class="poster-info">
-                    <h3 class="poster-title">Eternal Bonds</h3>
-                    <div class="poster-meta">
-                        <span>2022</span>
-                        <span class="rating"><i class="fas fa-star"></i> 8.4</span>
+            
+            <!-- Drama Card 4 -->
+            <div class="drama-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Whispering Winds</h3>
+                    <div class="card-info">
+                        <span>2023 • Mystery</span>
+                        <span class="card-rating"><i class="fas fa-star"></i> 9.0</span>
                     </div>
                 </div>
+                <div class="card-badge">Popular</div>
             </div>
-            <div class="poster-card" onclick="showContentPage()">
-                <img src="https://images.unsplash.com/photo-1489599809505-f2a93ef151d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80" alt="Drama Poster" class="poster-image">
-                <div class="poster-info">
-                    <h3 class="poster-title">Midnight in Paris</h3>
-                    <div class="poster-meta">
-                        <span>2023</span>
-                        <span class="rating"><i class="fas fa-star"></i> 8.9</span>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Featured Drama -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Featured Drama</h2>
+        </div>
+        <div class="featured-drama">
+            <div class="featured-image"></div>
+            <div class="featured-content">
+                <h2 class="featured-title">Serendipity in Seoul</h2>
+                <div class="featured-meta">
+                    <span>2023 • 16 Episodes</span>
+                    <span>Romance, Comedy</span>
+                    <span><i class="fas fa-star"></i> 9.5</span>
                 </div>
-            </div>
-            <div class="poster-card" onclick="showContentPage()">
-                <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2031&q=80" alt="Drama Poster" class="poster-image">
-                <div class="poster-info">
-                    <h3 class="poster-title">The Forgotten Kingdom</h3>
-                    <div class="poster-meta">
-                        <span>2022</span>
-                        <span class="rating"><i class="fas fa-star"></i> 8.6</span>
-                    </div>
+                <p class="featured-description">A heartwarming tale of two strangers whose paths cross in the bustling streets of Seoul. As they navigate life's challenges, they discover that sometimes the most beautiful moments happen by chance.</p>
+                <div class="featured-actions">
+                    <button class="watch-btn"><i class="fas fa-play"></i> Watch Now</button>
+                    <button class="save-btn"><i class="fas fa-plus"></i> Add to List</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content Page -->
-    <section class="content-page" id="content-page">
-        <div class="content-header">
-            <div class="content-poster">
-                <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="The Last Emperor">
-            </div>
-            <div class="content-details">
-                <h1 class="content-title">The Last Emperor</h1>
-                <div class="content-meta">
-                    <div class="meta-chip">2023</div>
-                    <div class="meta-chip">Historical Drama</div>
-                    <div class="meta-chip quality">4K Ultra HD</div>
-                    <div class="meta-chip rating"><i class="fas fa-star"></i> 8.7/10</div>
-                    <div class="meta-chip">2h 18m</div>
-                </div>
-                <p class="content-description">
-                    In the final days of the Ming Dynasty, a young emperor must navigate treacherous court politics, foreign invasions, and personal betrayals to save his crumbling empire. This epic historical drama brings to life the opulence and intrigue of imperial China with stunning cinematography and powerful performances.
-                </p>
-                <div class="content-actions">
-                    <button class="btn-play"><i class="fas fa-play"></i> Play Now</button>
-                    <button class="btn-favorite"><i class="fas fa-plus"></i></button>
-                    <button class="btn-favorite"><i class="far fa-thumbs-up"></i></button>
-                </div>
-                <div class="content-info">
-                    <p><strong>Cast:</strong> Zhang Yi, Zhou Xun, Wang Kai, Li Qin</p>
-                    <p><strong>Director:</strong> Chen Kaige</p>
-                    <p><strong>Languages:</strong> Mandarin, English Subtitles</p>
-                </div>
-            </div>
+    <!-- Recommended For You -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Recommended For You</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
         </div>
-
-        <!-- Recommendation Ribbon -->
-        <div class="recommendation-ribbon">
-            <h3 class="ribbon-header"><i class="fas fa-fire"></i> More Like This</h3>
-            <div class="ribbon-container">
-                <div class="ribbon-item">
-                    <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Shadows of Deceit">
+        <div class="carousel">
+            <div class="carousel-container">
+                <!-- Carousel Item 1 -->
+                <div class="carousel-item">
+                    <div class="carousel-image"></div>
+                    <div class="carousel-title">First Love</div>
                 </div>
-                <div class="ribbon-item">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2050&q=80" alt="Eternal Bonds">
+                
+                <!-- Carousel Item 2 -->
+                <div class="carousel-item">
+                    <div class="carousel-image"></div>
+                    <div class="carousel-title">Winter Sonata</div>
                 </div>
-                <div class="ribbon-item">
-                    <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2031&q=80" alt="The Forgotten Kingdom">
+                
+                <!-- Carousel Item 3 -->
+                <div class="carousel-item">
+                    <div class="carousel-image"></div>
+                    <div class="carousel-title">Coffee Prince</div>
                 </div>
-                <div class="ribbon-item">
-                    <img src="https://images.unsplash.com/photo-1489599809505-f2a93ef151d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80" alt="Midnight in Paris">
+                
+                <!-- Carousel Item 4 -->
+                <div class="carousel-item">
+                    <div class="carousel-image"></div>
+                    <div class="carousel-title">Goblin</div>
                 </div>
-                <div class="ribbon-item">
-                    <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="The Red Sleeve">
+                
+                <!-- Carousel Item 5 -->
+                <div class="carousel-item">
+                    <div class="carousel-image"></div>
+                    <div class="carousel-title">Crash Landing</div>
                 </div>
+                
+                <!-- Carousel Item 6 -->
+                <div class="carousel-item">
+                    <div class="carousel-image"></div>
+                    <div class="carousel-title">Itaewon Class</div>
+                </div>
+            </div>
+            <div class="carousel-nav carousel-prev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-nav carousel-next">
+                <i class="fas fa-chevron-right"></i>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Navigation</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">TV Shows</a></li>
+                <h3>DramaWallah</h3>
+                <p>Your premium destination for Asian dramas and movies. Experience storytelling at its finest.</p>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Browse</h3>
+                <ul class="footer-links">
+                    <li><a href="#">K-Dramas</a></li>
+                    <li><a href="#">C-Dramas</a></li>
+                    <li><a href="#">J-Dramas</a></li>
+                    <li><a href="#">Thai Dramas</a></li>
                     <li><a href="#">Movies</a></li>
-                    <li><a href="#">New & Popular</a></li>
-                    <li><a href="#">My List</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Drama</a></li>
-                    <li><a href="#">Thriller</a></li>
-                    <li><a href="#">Romance</a></li>
-                    <li><a href="#">Historical</a></li>
+                <h3>Help</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Legal</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Connect With Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates on new releases and recommendations.</p>
+                <div style="margin-top: 1rem; display: flex;">
+                    <input type="email" placeholder="Your email" style="padding: 0.8rem; border: none; border-radius: 50px 0 0 50px; width: 70%;">
+                    <button style="padding: 0.8rem 1.2rem; background: var(--pastel-purple); color: white; border: none; border-radius: 0 50px 50px 0; cursor: pointer;">Subscribe</button>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2023 DramaWallah. All rights reserved.
+        <div class="footer-bottom">
+            <p>&copy; 2023 DramaWallah. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Show content page when a poster is clicked
-        function showContentPage() {
-            document.getElementById('content-page').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Auto-scroll for recommendation ribbon
-        const ribbonContainer = document.querySelector('.ribbon-container');
-        let scrollAmount = 0;
-        const scrollStep = 1;
-        const scrollDelay = 30;
-
-        function autoScrollRibbon() {
-            if (ribbonContainer) {
-                scrollAmount += scrollStep;
-                ribbonContainer.scrollLeft = scrollAmount;
-                
-                // Reset scroll when reaching the end
-                if (scrollAmount >= ribbonContainer.scrollWidth - ribbonContainer.clientWidth) {
-                    scrollAmount = 0;
-                }
-            }
-        }
-
-        // Start auto-scroll
-        setInterval(autoScrollRibbon, scrollDelay);
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Add hover effects to poster cards
-        document.querySelectorAll('.poster-card').forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const angleY = (x - centerX) / 25;
-                const angleX = (centerY - y) / 25;
-                
-                this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px) scale(1.02)`;
+        // Simple carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselContainer = document.querySelector('.carousel-container');
+            const carouselPrev = document.querySelector('.carousel-prev');
+            const carouselNext = document.querySelector('.carousel-next');
+            
+            carouselNext.addEventListener('click', function() {
+                carouselContainer.scrollBy({ left: 300, behavior: 'smooth' });
             });
             
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+            carouselPrev.addEventListener('click', function() {
+                carouselContainer.scrollBy({ left: -300, behavior: 'smooth' });
             });
         });
     </script>
